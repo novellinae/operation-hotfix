@@ -6,75 +6,64 @@ Complete one entry per bug. All six entries are required for full marks.
 
 ## Bug 1 — Silent RLS Block
 
-| Field          | Your Entry |
-| -------------- | ---------- |
-| **Symptom**    |  The table on the dashboard displays “Empty table” even though when checked, there are 5 rows of data in the shipment table in the Supabase database.         |
-| **Hypothesis** | RLS Policy sudah ada untuk tabel shipments namun, tidak ada policy untuk anon dapat melakukan read pada tabel shipments           |
-| **AI Prompt**  | I am a software engineer intern currently studying next js & supabase, i got a technical assesment where my job is  to read the codebase cold, diagnose six live bugs, fix them, and document your process exactly as you would in a real incident. In this study case i need to resolve all the six bug that OA has filed, then implement new feature but lets focus on fixing the bug first
-
-i already sent you the ReadMe.MD - this is the documentation about what should we do,
-legacy_setup.sql - this is the sql code that need to import in supabase.      |
-
-| **Fix**        | Menambahkan RLS policy SELECT untuk role anon pada table shipments supaya dapat membaca tabel yang ada di supabase dan muncul di dashboard.    |
+| Field | Your Entry |
+|------|------------|
+| **Symptom** | The dashboard table displays **“Empty table”** even though there are **5 rows of data in the `shipments` table** in the Supabase database. |
+| **Hypothesis** | RLS policy exists for the `shipments` table, but there is **no policy allowing the `anon` role to read data** from the table. |
+| **AI Prompt** | I am a software engineer intern currently studying **Next.js and Supabase**. I received a technical assessment where my task is to **read a codebase cold, diagnose six live bugs, fix them, and document the debugging process exactly as in a real incident report**. In this case study, I need to resolve all six bugs reported in the OA before implementing new features. I already sent you two files: `README.md` (documentation explaining the task) and `legacy_setup.sql` (SQL schema that must be imported into Supabase). |
+| **Fix** | Added an **RLS SELECT policy for the `anon` role** on the `shipments` table so the dashboard can read and display shipment data from Supabase. |
 
 ---
 
 ## Bug 2 — Ghost Mutation
 
-| Field          | Your Entry |
-| -------------- | ---------- |
-| **Symptom**    |   • changing a shipment status shows a success toast notification
-  • However, after refreshing the page, the shipment status returns to its original value
-  •  Inspecting the shipments table in Supabase, it shows that no rows were updated |
-| **Hypothesis** |  • Supabase update query may not be executing correctly
-  • Server action may be returning success without waiting for database mutation to complete
-  • Update query may not bet targeting the row
-  • Database might reject update due to constraints or trigger|
-| **AI Prompt**  | Moving on to bug number 2, where the root cause is that the status does not change when updated on the server action. Please teach me how to debug and what needs to be done.
-Why is it necessary to add await for the change to occur, but when await is not added, the status does not change?
-|
-| **Fix**        |Added `await` to ensure the database mutation completes before the returning success|
+| Field | Your Entry |
+|------|------------|
+| **Symptom** | - Changing a shipment status shows a **success toast notification**. <br> - After refreshing the page, the shipment status **returns to its original value**. <br> - Inspecting the `shipments` table in Supabase shows **no rows were updated**. |
+| **Hypothesis** | - Supabase update query might **not execute correctly**. <br> - The server action might **return success before the database mutation completes**. <br> - The update query might **not target the correct row**. <br> - The database might **reject the update due to constraints or triggers**. |
+| **AI Prompt** | Moving on to **Bug #2**, where the root cause is that the shipment status does not change when updated via a server action. Please explain how to properly debug this issue and what steps should be taken. Why does adding `await` allow the change to occur, while removing `await` causes the status to remain unchanged? |
+| **Fix** | Added `await` to ensure the **database mutation completes before returning a success response**. |
 
 ---
 
 ## Bug 3 — Infinite Loop
 
-| Field          | Your Entry |
-| -------------- | ---------- |
-| **Symptom**    |            |
-| **Hypothesis** |            |
-| **AI Prompt**  |            |
-| **Fix**        |            |
+| Field | Your Entry |
+|------|------------|
+| **Symptom** | |
+| **Hypothesis** | |
+| **AI Prompt** | |
+| **Fix** | |
 
 ---
 
 ## Bug 4 — The Invisible Cargo
 
-| Field          | Your Entry |
-| -------------- | ---------- |
-| **Symptom**    |            |
-| **Hypothesis** |            |
-| **AI Prompt**  |            |
-| **Fix**        |            |
+| Field | Your Entry |
+|------|------------|
+| **Symptom** | |
+| **Hypothesis** | |
+| **AI Prompt** | |
+| **Fix** | |
 
 ---
 
 ## Bug 5 — The Unreliable Search
 
-| Field          | Your Entry |
-| -------------- | ---------- |
-| **Symptom**    |            |
-| **Hypothesis** |            |
-| **AI Prompt**  |            |
-| **Fix**        |            |
+| Field | Your Entry |
+|------|------------|
+| **Symptom** | |
+| **Hypothesis** | |
+| **AI Prompt** | |
+| **Fix** | |
 
 ---
 
 ## Bug 6 — The Persistent Ghost
 
-| Field          | Your Entry |
-| -------------- | ---------- |
-| **Symptom**    |            |
-| **Hypothesis** |            |
-| **AI Prompt**  |            |
-| **Fix**        |            |
+| Field | Your Entry |
+|------|------------|
+| **Symptom** | |
+| **Hypothesis** | |
+| **AI Prompt** | |
+| **Fix** | |
