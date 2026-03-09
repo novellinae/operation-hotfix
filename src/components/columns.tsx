@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import type { Shipment } from '@/types/shipment'
+import { normalizeCargoDetails } from '@/utils/normalizeCargoDetails'
 import { ColumnDef } from '@tanstack/react-table'
 import { MoreHorizontal } from 'lucide-react'
 import { toast } from 'sonner'
@@ -43,7 +44,10 @@ export const columns: ColumnDef<Shipment>[] = [
     accessorKey: 'cargo_details',
     header: 'Cargo',
     cell: ({ row }) => {
-      const cargo = row.getValue<Shipment['cargo_details']>('cargo_details')
+      const rawCargo = row.getValue<Shipment['cargo_details']>('cargo_details')
+      const cargo = normalizeCargoDetails(rawCargo)
+
+      console.log(row.getValue("cargo_details"))
       if (!cargo)
         return <span className='text-sm text-muted-foreground'>—</span>
       return (
